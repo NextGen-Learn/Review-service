@@ -1,20 +1,34 @@
-FROM python:3.9-slim
+*.pyc
+*.pyo
+__pycache__/
 
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    gcc \
-    && apt-get clean
+*/migrations/*
 
-WORKDIR /app
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-COPY requirements.txt .
+.idea/
 
-RUN pip install --no-cache-dir -r requirements.txt
+*.swp
+*.swo
 
-COPY . .
+*.sqlite3
+*.db
 
-RUN python manage.py migrate
+/static/
+staticfiles/
+media/
 
-EXPOSE 8003
+*.log
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8003"]
+local_settings.py
+
+*.mo
+
+docker-compose.override.yml
+.env.docker
